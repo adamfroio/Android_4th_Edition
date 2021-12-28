@@ -23,17 +23,18 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(
                 this,
                 R.string.correct_toast,
-                Toast.LENGTH_SHORT)
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
 
         falseButton.setOnClickListener { view: View ->
-            val myToast = Toast.makeText(
+            Toast.makeText(
                 this,
                 R.string.incorrect_toast,
-                Toast.LENGTH_SHORT)
-           myToast.setGravity(Gravity.TOP, 0, 0)
-               myToast.show()
+                Toast.LENGTH_SHORT
+            )
+                .show()
         }
 
     }

@@ -16,6 +16,8 @@ class QuizViewModel : ViewModel() {
         Question(R.string.question_asia, true))
 
     var currentIndex = 0
+    var cheated = false
+    var cheatedQuestions = mutableListOf<Boolean>()
 
     val currentQuestionAnswer: Boolean
     get() = questionBank[currentIndex].answer
@@ -26,4 +28,15 @@ class QuizViewModel : ViewModel() {
     fun moveToNext() {
         currentIndex = (currentIndex + 1) % questionBank.size
     }
+
+    fun initCheatProtection() {
+        for(i in 0 until questionBank.size) {
+            cheatedQuestions.add(false)
+        }
+    }
+
+    fun setCheatedQuestion(questionIndex: Int) {
+        cheatedQuestions[questionIndex] = true
+    }
+
 }

@@ -18,6 +18,7 @@ class QuizViewModel : ViewModel() {
     var currentIndex = 0
     var cheated = false
     var cheatedQuestions = mutableListOf<Boolean>()
+    var cheatsRemaining = 3
 
     val currentQuestionAnswer: Boolean
     get() = questionBank[currentIndex].answer
@@ -30,7 +31,7 @@ class QuizViewModel : ViewModel() {
     }
 
     fun initCheatProtection() {
-        for(i in 0 until questionBank.size) {
+        for(i in questionBank.indices) {
             cheatedQuestions.add(false)
         }
     }

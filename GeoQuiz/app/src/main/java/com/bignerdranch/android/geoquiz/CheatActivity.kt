@@ -3,6 +3,7 @@ package com.bignerdranch.android.geoquiz
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,7 @@ class CheatActivity : AppCompatActivity() {
 
     private lateinit var answerTextView: TextView
     private lateinit var showAnswerButton: Button
+    private lateinit var apiLevelTextView: TextView
 
     private var answerIsTrue = false
 
@@ -26,6 +28,7 @@ class CheatActivity : AppCompatActivity() {
 
         answerTextView = findViewById(R.id.answer_text_view)
         showAnswerButton = findViewById(R.id.show_answer_button)
+        apiLevelTextView = findViewById(R.id.api_level_text_view)
 
         showAnswerButton.setOnClickListener {
             val answerText = when {
@@ -35,6 +38,13 @@ class CheatActivity : AppCompatActivity() {
             answerTextView.setText(answerText)
             setAnswerShownResult(true)
         }
+
+        // default to the API level
+        showApiLevel("API Level ${Build.VERSION.SDK_INT}")
+    }
+
+    private fun showApiLevel(apiLevel: String) {
+        apiLevelTextView.setText(apiLevel)
     }
 
     private fun setAnswerShownResult(isAnswerShown: Boolean) {
